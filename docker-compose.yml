@@ -1,0 +1,19 @@
+version: '3.8'
+services:
+  elasticsearch:
+    image: docker.elastic.co/elasticsearch/elasticsearch:8.10.2
+    container_name: es8
+    environment:
+      - discovery.type=single-node
+      - xpack.security.enabled=false   # para desarrollo local; en prod no lo desactives
+      - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
+    ulimits:
+      memlock:
+        soft: -1
+        hard: -1
+    volumes:
+      - esdata:/usr/share/elasticsearch/data
+    ports:
+      - 9200:9200
+volumes:
+  esdata:
