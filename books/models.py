@@ -6,7 +6,7 @@ class Book(models.Model):
     description = models.TextField(blank=True)
     published_date = models.DateField(null=True, blank=True)
     isbn = models.CharField(max_length=20, blank=True)
-    tags = models.JSONField(default=list, blank=True)  # o ManyToMany con Tag
+    tags = models.JSONField(default=list, blank=True)
     created_at = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
