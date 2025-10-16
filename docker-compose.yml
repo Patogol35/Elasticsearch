@@ -5,8 +5,8 @@ services:
     container_name: es8
     environment:
       - discovery.type=single-node
-      - xpack.security.enabled=false   # para desarrollo local; en prod no lo desactives
-      - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
+      - xpack.security.enabled=false
+      - ES_JAVA_OPTS=-Xms512m -Xmx512m
     ulimits:
       memlock:
         soft: -1
@@ -15,5 +15,17 @@ services:
       - esdata:/usr/share/elasticsearch/data
     ports:
       - 9200:9200
+
+  # Servicio web opcional (descomentar si quieres que Django se ejecute en Docker)
+  # web:
+  #   build: .
+  #   command: gunicorn library_project.wsgi:application --bind 0.0.0.0:8000
+  #   volumes:
+  #     - .:/code
+  #   ports:
+  #     - 8000:8000
+  #   depends_on:
+  #     - elasticsearch
+
 volumes:
   esdata:
