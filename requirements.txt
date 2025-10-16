@@ -3,4 +3,6 @@ djangorestframework>=3.14
 elasticsearch>=8.0.0,<9.0.0
 elasticsearch-dsl>=8.0.0
 django-elasticsearch-dsl>=7.0.0
-psycopg2-binary>=2.9  # si usas Postgres; opcional
+psycopg2-binary>=2.9    # opcional si usas Postgres
+python-decouple>=3.8    # para .env
+dj-database-url>=1.0.0  # opcional, parsear DATABASE_URL
